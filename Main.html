@@ -18,17 +18,19 @@
 
 </head>
 <body>
-	<div class="row">
-		<div id="activityCanvas" class="span3 drop">
+	<div class="row-fluid">
+		<div id="activityCanvas" class="span3">
 			<a href="#" id="addActivityButton" class="btn btn-success btn-block" rel="popover" data-content="It's so simple to create a tooltop for my website!" data-original-title="Twitter Bootstrap Popover"><i class="icon-plus"></i>Add activity</a>
-			<table id="activityTable" class="table table-bordered">
-				<tr id="drag1" draggable="true" ondragstart="drag(event)" >
-					<td>intro</td>
-				</tr>
-				<tr>
-					<td>break</td>
-				</tr>
-			</table>
+			<div class="dnd-container">
+				<table id="activityTable" class="table table-bordered">
+					<tr id="drag1" draggable="true" ondragstart="drag(event)" >
+						<td>intro</td>
+					</tr>
+					<tr>
+						<td>break</td>
+					</tr>
+				</table>
+			</div>
 		</div>
 
 		<div id="activitySchedule" class="span3">
@@ -36,19 +38,21 @@
             	<input id="startTime" type="text" class="input-small">
             	<span class="add-on"><i class="icon-time"></i></span>
         	</div>
-			<div id="endTime">End time: 8:00</div>
-			<div id="totalLength">Total length: 100</div>
-			<table id="scheduleTable" class="table table-bordered">
-				<tr>
-					<td>intro2</td>
-				</tr>
-				<tr>
-					<td>break2</td>
-				</tr>
-			</table>
+			<div id="endTime" style="text-align: center">End time: 8:00</div>
+			<div id="totalLength" style="text-align: center">Total length: 100</div>
+			<div id="dnd1" class="dnd-container">
+				<table id="scheduleTable" class="table table-bordered">
+					<tr>
+						<td>intro2</td>
+					</tr>
+					<tr>
+						<td>break2</td>
+					</tr>
+				</table>
+			</div>
 		</div>
 		<div id="newDayContainer" class="span3">
-			<button class="btn btn-large btn-success" type="button">Add a day</button>
+			<button class="btn btn-large btn-success" type="button" style="margin-top: 200px;margin-left: 50px">Add a day</button>
 		</div>
 	</div>
 	<script> 
