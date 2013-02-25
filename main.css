@@ -1,6 +1,8 @@
 #addActivityButton {
-	margin-left: 70px;
+	margin-bottom: 5px;
+
 }
-#activityCanvas {
-	margin-left: 30px;
+body {
+	margin-top: 5px;
+	margin-left: 10px;
 }
