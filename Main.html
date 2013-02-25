@@ -8,14 +8,25 @@
 	<script src="libs/bootstrap/js/bootstrap.js"></script>
 	<script src="libs/bootstrap/js/bootstrap.min.js"></script>
 	<script src="libs/bootstrap/js/bootstrap-timepicker.js"></script>
+	<!--<script src="libs/bootstrap/js/bootstrap-timepicker.js"></script>
+	<script src="libs/bootstrap/js/bootstrap-timepicker.min.js"></script>-->
 	<script src="Model.js"></script>
+	<script src="view/dragAndDropListView.js"></script>
+	<script src="mainController.js"></script>
+	<script type="text/javascript">
+		//The global variable so we can accesse it from objects
+		var mainController;
+	
+		$(document).ready(function(e) {
+			mainController = new MainController(model);
+		});
+	</script>
 	<script src="dragAndDrop.js"></script>
 	<script>
 	function drag(ev) {
 		ev.dataTransfer.setData("Text",ev.target.id);
 	}
 	</script>
-
 </head>
 <body>
 	<div class="row-fluid">
@@ -57,7 +68,7 @@
 	</div>
 	<script> 
 		$('#addActivityButton').popover({placement:'bottom'});
-        $('#startTime').timepicker();
+        //$('#startTime').timepicker();
 	</script>
 </body>
 </html>
