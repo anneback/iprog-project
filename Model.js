@@ -115,8 +115,8 @@ function Day(startH,startM) {
 		if(newposition > oldposition) {
 			newposition--;
 		}
-		var activity = this.removeActivity(oldposition);
-		this.addActivity(activity, newposition);
+		var activity = this._removeActivity(oldposition);
+		this._addActivity(activity, newposition);
 	};
 }
 
@@ -137,7 +137,6 @@ function Model(){
 		}
 		this.days.push(day);
 		this.notifyObservers();
-		return day;
 	};
 	
 	// add an activity to model
@@ -167,6 +166,8 @@ function Model(){
 	// to move a parked activity to let's say day 0 you set oldday to null
 	// and new day to 0
 	this.moveActivity = function(oldday, oldposition, newday, newposition) {
+		console.log("moving from day "+oldday+", to day "+newday);
+		console.log("moving from position "+oldposition+" to position "+ newposition);
 		if(oldday !== null && oldday == newday) {
 			this.days[oldday]._moveActivity(oldposition,newposition);
 		} if(oldday == null) {
@@ -200,6 +201,7 @@ function Model(){
 // this is the instance of our main model
 // this is what you should use in your application
 var model = new Model();
+createTestData();
 
 
 // you can use this method to create some test data and test your implementation
