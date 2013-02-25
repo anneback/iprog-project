@@ -5,7 +5,7 @@ function DragAndDropListView (model) {
 	function setupListView(){
 		var tmpList = model.days;
 		for (var i = model.days.length - 1; i >= 0; i--) {
-			var activity = tmpList.[i];
+			var activity = tmpList[i];
 			var tr = $('<tr>');
 			//[0]presentation = .info, [1]discussion = .success, [2]break = .warning, [3]groupwork = .error
 			//"Presentation" = info,"Group Work" = .error,"Discussion" = .success,"Break" = .warning
