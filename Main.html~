@@ -10,7 +10,6 @@
 	<!--<script src="libs/bootstrap/js/bootstrap-timepicker.js"></script>
 	<script src="libs/bootstrap/js/bootstrap-timepicker.min.js"></script>-->
 	<script src="Model.js"></script>
-<<<<<<< HEAD
 	<script src="view/dragAndDropListView.js"></script>
 	<script src="mainController.js"></script>
 	<script type="text/javascript">
@@ -21,7 +20,6 @@
 			mainController = new MainController(model);
 		});
 	</script>
-=======
 	<script src="dragAndDrop.js"></script>
 	<script>
 	function drag(ev) {
@@ -29,15 +27,11 @@
 	}
 	</script>
 
->>>>>>> caf171b614ced3258af2d9aee099f2e19a6f6619
 </head>
 <body>
 	<div class="row">
 		<div id="activityCanvas" class="span3">
 			<a href="#" id="addActivityButton" class="btn btn-danger" rel="popover" data-content="It's so simple to create a tooltop for my website!" data-original-title="Twitter Bootstrap Popover">Add activity</a>
-<<<<<<< HEAD
-			<table id="activityTable" class="table table-bordered"></table>
-=======
 			<table id="activityTable" class="table table-bordered">
 				<tr id="drag1" draggable="true" ondragstart="drag(event)" >
 					<td>intro</td>
@@ -46,7 +40,6 @@
 					<td>break</td>
 				</tr>
 			</table>
->>>>>>> caf171b614ced3258af2d9aee099f2e19a6f6619
 		</div>
 
 		<div id="activitySchedule" class="span2">

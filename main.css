@@ -1,0 +1,14 @@
+#addActivityButton {
+	margin-bottom: 5px;
+
+}
+body {
+	margin-top: 5px;
+	margin-left: 10px;
+}
+.dnd-container {
+	border: 5px dashed green;
+	padding: 2px;
+	height: 400px;
+	background-color: rgb(245, 240, 240);
+}

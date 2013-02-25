@@ -1,6 +1,6 @@
 window.onready = function(){
     // Handle drops
-    var drop_box = document.querySelector('#activitySchedule');
+    var drop_box = document.querySelector('#dnd1');
 
     drop_box.addEventListener('dragstart', function(e){
         e.dataTransfer.setData('text/html', this.innerHTML);
