@@ -2,7 +2,7 @@ function DragAndDropListView (model) {
 
 	setupListView();
 
-	function setupListView(){	
+	function setupListView(){
 		var tmpList = model.days;
 		for (var i = model.days.length - 1; i >= 0; i--) {
 			var activity = tmpList.[i];
@@ -25,4 +25,4 @@ function DragAndDropListView (model) {
 			$('activityTable').append(tr);
 		};
 	}
-}
+};
