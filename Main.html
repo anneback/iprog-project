@@ -11,6 +11,7 @@
 	<!--<script src="libs/bootstrap/js/bootstrap-timepicker.js"></script>
 	<script src="libs/bootstrap/js/bootstrap-timepicker.min.js"></script>-->
 	<script src="Model.js"></script>
+	<script src="view/newActivityView.js"></script>
 	<script src="view/dragAndDropListView.js"></script>
 	<script src="mainController.js"></script>
 	<script type="text/javascript">
@@ -31,17 +32,36 @@
 <body>
 	<div class="row-fluid">
 		<div id="activityCanvas" class="span3">
-			<a href="#" id="addActivityButton" class="btn btn-success btn-block" rel="popover" data-content="It's so simple to create a tooltop for my website!" data-original-title="Twitter Bootstrap Popover"><i class="icon-plus"></i>Add activity</a>
+			<!--
+			<a href="#" id="addActivityButton" class="btn btn-success btn-block" rel="popover" data-content="It's so simple to create a tooltop for my website!" data-original-title="Twitter Bootstrap Popover"><i class="icon-plus"></i>Add activity</a>-->
+			<a href="#" id="addActivityButton" class="btn btn-success btn-block" rel="popover"><i class="icon-plus"></i>Add activity</a>
+			<div id="titlePopupField" class="hide">
+					<label>Activity Name</label>
+    				<input type="text" placeholder="Type activity name...">
+    				<label>Time (min)</label>
+    				<input type="number" name="timeQuantity" min="1" max="60">
+    				<div class="btn-group">
+  						<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+   							 Action
+    					<span class="caret"></span>
+ 						</a>
+  						<ul class="dropdown-menu">
+    						<li><a tabindex="-1" href="#">Presentation</a></li>
+  							<li><a tabindex="-1" href="#">Discussion</a></li>
+							<li><a tabindex="-1" href="#">Group Work</a></li>
+							<li><a tabindex="-1" href="#">Break</a></li>
+  						</ul>
+					</div>
+					<textarea id="descriptionTextArea" rows="6">Description of the activity..</textarea>
+			</div>
+
+			<div id="contentPopupField" class="hide">
+				 <button class="btn btn-success" type="button">Add activity</button>
+			</div>
+
+
 			<div class="dnd-container">
 				<table id="activityTable" class="table table-bordered">
-					<!--
-					<tr id="drag1" draggable="true" ondragstart="drag(event)" >
-						<td>intro</td>
-					</tr>
-					<tr>
-						<td>break</td>
-					</tr>
-				-->
 				</table>
 			</div>
 		</div>
@@ -68,9 +88,9 @@
 			<button class="btn btn-large btn-success" type="button" style="margin-top: 200px;margin-left: 50px">Add a day</button>
 		</div>
 	</div>
-	<script> 
-		$('#addActivityButton').popover({placement:'bottom'});
+	<!--<script> 
+		$('#addActivityButton').popover({placement:'bottom', title:'TROLOLOLOLO', content:'HAHA HOHO HIHI'});
         //$('#startTime').timepicker();
-	</script>
+	</script>-->
 </body>
 </html>

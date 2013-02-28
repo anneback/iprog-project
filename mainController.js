@@ -8,4 +8,5 @@ function MainController(model) {
 	
 	createTestData();
 	var dragAndDropListView = new DragAndDropListView(model);
+	var newActivityView = new NewActivityView();
 }
