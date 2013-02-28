@@ -12,21 +12,25 @@ function DragAndDropListView (model) {
 			//[0]presentation = .info, [1]discussion = .success, [2]break = .warning, [3]groupwork = .error
 			//"Presentation" = info,"Group Work" = .error,"Discussion" = .success,"Break" = .warning
 
-			if(activity.getType()=="Presentation") {
+			//console.log("type:" + activity.getType());
+
+			tr.attr('draggable', 'true');
+			tr.attr('ondragstart', 'drag(event)');
+			if(activity.getType()==="Presentation") {
 				tr.attr('class','info');
 			} else 
-			if(activity.getType()=="Group Work") {
+			if(activity.getType()==="Group Work") {
 				tr.attr('class','error');
 			} else
-			if(activity.getType()=="Discussion") {
+			if(activity.getType()==="Discussion") {
 				tr.attr('class','success');
 			} else
-			if(activity.getType()=="Break") {
+			if(activity.getType()==="Break") {
 				tr.attr('class','warning');
 			}
 			tr.append('<td>'+activity._length+'</td>');
-			tr.append('<td>'+activity._name+'</td>');	
-			$('activityTable').append(tr);
+			tr.append('<td>'+activity._name+'</td>');
+			$('#activityTable').append(tr);
 			};
 		};
 	}
