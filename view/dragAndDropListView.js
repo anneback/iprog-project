@@ -10,9 +10,7 @@ function DragAndDropListView (model) {
 			var activity = day._activities[j];
 			var tr = $('<tr>');
 			//[0]presentation = .info, [1]discussion = .success, [2]break = .warning, [3]groupwork = .error
-			//"Presentation" = info,"Group Work" = .error,"Discussion" = .success,"Break" = .warning
-
-			//console.log("type:" + activity.getType());
+			//"Presentation" = .info,"Group Work" = .error,"Discussion" = .success,"Break" = .warning
 
 			tr.attr('draggable', 'true');
 			tr.attr('ondragstart', 'drag(event)');
