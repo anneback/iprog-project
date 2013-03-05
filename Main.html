@@ -41,17 +41,22 @@
     			<label>Time (min)</label>
     			<input type="number" name="timeQuantity" min="1" max="60">
     			<div class="btn-group">
-					<a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
-						Type
-						<span class="caret"></span>
-				  	</a>
-				  	<ul class="dropdown-menu">
-				    	<li><a tabindex="-1" href="#">Presentation</a></li>
+					<a href="#" id="typebutton" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Type <span class="caret"></span></a>
+				  	<ul id="dd" class="dropdown-menu">
+				    	<li><a href="#">Presentation</a></li>
 				    	<li><a tabindex="-1" href="#">Group Work</a></li>
 				    	<li><a tabindex="-1" href="#">Discussion</a></li>
 				    	<li><a tabindex="-1" href="#">Break</a></li>
 				  	</ul>
 				</div>
+				<script>
+				$(function(){
+					$('.dropdown-toggle').dropdown();
+					$(".dropdown-menu li a").click(function(){
+						$("#typebutton").text($(this).text());
+					});
+				});
+				</script>
   				<textarea id="descriptionTextArea" rows="6"  placeholder="Type activity description..."></textarea>
 			</div>
 			<div id="contentPopupField" class="hide">
