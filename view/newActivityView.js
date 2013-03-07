@@ -14,4 +14,5 @@ function NewActivityView () {
 				return $("#contentPopupField").html();
     	}
 	});
+	$("#confirmActivityButton").popover('destroy');
 }
