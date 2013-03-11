@@ -5,15 +5,10 @@ function MainController(model) {
 	this.endTime = $('#endTime');
 	this.totalLength = $('#totalLength');
 	this.addADayButton = $('#addADay');
-	this.addActivityButton = $('#addActivityButton');
 	
 	createTestData();
 	var dragAndDropListView = new DragAndDropListView(model);
 	var newActivityView = new NewActivityView();
-
-	this.addActivityButton.click(function(){
-		console.log("click happened");
-		$("#confirmActivityButton").popover('hide');
-	});
+	var newActivityViewController = new NewActivityViewController();
 
 }

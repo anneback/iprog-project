@@ -11,13 +11,14 @@
 	<!--<script src="libs/bootstrap/js/bootstrap-timepicker.js"></script>
 	<script src="libs/bootstrap/js/bootstrap-timepicker.min.js"></script>-->
 	<script src="Model.js"></script>
+	<script src="view/newActivityViewController.js"></script>
 	<script src="view/newActivityView.js"></script>
 	<script src="view/dragAndDropListView.js"></script>
 	<script src="mainController.js"></script>
 	<script type="text/javascript">
 		//The global variable so we can accesse it from objects
 		var mainController;
-	
+		var model = new Model();
 		$(document).ready(function(e) {
 			mainController = new MainController(model);
 		});
@@ -59,41 +60,7 @@
 			</div>
 			<div id="contentPopupField" class="hide">
 				 <button id="confirmActivityButton" class="btn btn-success" type="button">Add activity</button>
-				<script>
-					$("#confirmActivityButton").click(function(){
-						function typeStringToId(typeText){
-							var newTypeId;
-							if(typeText==="Presentation") {
-								newTypeId = 0;
-							} else
-							if(typeText==="Group Work") {
-								newTypeId = 1;
-							} else
-							if(typeText==="Discussion") {
-								newTypeId = 2;
-							} else
-							if(typeText==="Break") {
-								newTypeId = 3;
-							}
-
-							console.log("TYPEID: "+newTypeId);
-							return newTypeId;
-						}
-
-						var newName = $('#newActivityName').val();
-						var newLength = $('#newActivityLength').val();
-						var newType = $('#typebutton').text();
-						var newDesc = $('#newActivityDescription').val();
-						var newTypeId = typeStringToId(newType);
-						var newAct = new Activity(newName,newLength,newTypeId,newDesc);
-						model.addParkedActivity(newAct);
-						console.log (model.parkedActivities);
-						$('#addActivityButton').popover('hide');
-					});
-				</script>
 			</div>
-
-
 			<div class="dnd-container">
 				<table id="activityTable" class="table table-bordered"></table>
 			</div>
