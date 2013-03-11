@@ -61,14 +61,8 @@
 				 <button id="confirmActivityButton" class="btn btn-success" type="button">Add activity</button>
 				<script>
 					$("#confirmActivityButton").click(function(){
-						var newName = $('#newActivityName').val();
-						var newLength = $('#newActivityLength').val();
-						var newType = $('#typebutton').text();
-						var newDesc = $('#newActivityDescription').val();
-						var newTypeId;
-						var newAct = new Activity(newName,newLength,typeStringToId(newType),newDesc);
-
 						function typeStringToId(typeText){
+							var newTypeId;
 							if(typeText==="Presentation") {
 								newTypeId = 0;
 							} else
@@ -81,9 +75,20 @@
 							if(typeText==="Break") {
 								newTypeId = 3;
 							}
-							model.addActivity(newAct,0);
+
 							console.log("TYPEID: "+newTypeId);
+							return newTypeId;
 						}
+
+						var newName = $('#newActivityName').val();
+						var newLength = $('#newActivityLength').val();
+						var newType = $('#typebutton').text();
+						var newDesc = $('#newActivityDescription').val();
+						var newTypeId = typeStringToId(newType);
+						var newAct = new Activity(newName,newLength,newTypeId,newDesc);
+						model.addParkedActivity(newAct);
+						console.log (model.parkedActivities);
+						$('#addActivityButton').popover('hide');
 					});
 				</script>
 			</div>
