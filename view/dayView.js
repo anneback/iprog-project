@@ -1,4 +1,4 @@
-function DayView(model) {
+function DayView(model, number) {
 	/*this.startTime = $('#startTime');
 	this.endTime = $('#endTime');
 	this.totalLength = $('#totalLength');
@@ -7,7 +7,7 @@ function DayView(model) {
 	var startTime = '08:00';
 	var endTime = '12:00';
 	var totalLength = 20;
-	var dayNumber = 1;
+	var dayNumber = number;
 	var totalLengthDiscussion = 14;
 	var totalLengthGroupWork = 32;
 	var totalLengthPresentation = 36;
@@ -19,7 +19,7 @@ function DayView(model) {
 
 		var dayDiv =  $('<div>');
 		dayDiv.attr('id','day'+dayNumber);
-		dayDiv.attr('class','span3');
+		dayDiv.attr('class','span3 dayContainer');
 
 		var timePickerDiv = $('<div>');
 		timePickerDiv.attr('class','input-append bootstrap-timepicker');
@@ -75,9 +75,15 @@ function DayView(model) {
 		dayDiv.append(dndContainerDiv);
 
 		$('#dayCanvas').append(dayDiv);
+
+        $('#startTime'+dayNumber).timepicker({
+            minuteStep: 1,
+            showMeridian: false
+        });
+        incrementDayNumber();
 	}
 
 	function incrementDayNumber() {
-		dayNumber++;
+		this.dayNumber++;
 	}
 }

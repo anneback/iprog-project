@@ -12,3 +12,7 @@ body {
 	height: 400px;
 	background-color: rgb(245, 240, 240);
 }
+
+.dayContainer {
+	margin-left: 10px;
+}

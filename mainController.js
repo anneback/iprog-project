@@ -12,7 +12,7 @@ function MainController(model) {
 	var dragAndDropListView = new DragAndDropListView(model);
 	var newActivityView = new NewActivityView();
 	this.newActivityViewController = new NewActivityViewController(newActivityView, model);
-	var dayView = new DayView(model);
-	var dayViewController = new DayViewController(model);
+	var dayView = new DayView(model, 1); //Init with one day
+	this.dayViewController = new DayViewController(model);
 
 }
