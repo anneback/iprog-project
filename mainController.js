@@ -6,10 +6,13 @@ function MainController(model) {
 	this.totalLength = $('#totalLength');
 	this.addADayButton = $('#addADay');
 
+
+	this.model = model;
 	createTestData(model);
 	var dragAndDropListView = new DragAndDropListView(model);
 	var newActivityView = new NewActivityView();
-	console.log("hej");
 	this.newActivityViewController = new NewActivityViewController(newActivityView, model);
+	var dayView = new DayView(model);
+	var dayViewController = new DayViewController(model);
 
 }
