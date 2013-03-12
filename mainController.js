@@ -5,10 +5,11 @@ function MainController(model) {
 	this.endTime = $('#endTime');
 	this.totalLength = $('#totalLength');
 	this.addADayButton = $('#addADay');
-	
-	createTestData();
+
+	createTestData(model);
 	var dragAndDropListView = new DragAndDropListView(model);
 	var newActivityView = new NewActivityView();
-	var newActivityViewController = new NewActivityViewController();
+	console.log("hej");
+	this.newActivityViewController = new NewActivityViewController(newActivityView, model);
 
 }

@@ -8,8 +8,6 @@
 	<script src="libs/bootstrap/js/bootstrap.js"></script>
 	<script src="libs/bootstrap/js/bootstrap.min.js"></script>
 	<script src="libs/bootstrap/js/bootstrap-timepicker.js"></script>
-	<!--<script src="libs/bootstrap/js/bootstrap-timepicker.js"></script>
-	<script src="libs/bootstrap/js/bootstrap-timepicker.min.js"></script>-->
 	<script src="Model.js"></script>
 	<script src="view/newActivityViewController.js"></script>
 	<script src="view/newActivityView.js"></script>
@@ -18,49 +16,19 @@
 	<script type="text/javascript">
 		//The global variable so we can accesse it from objects
 		var mainController;
-		var model = new Model();
+
 		$(document).ready(function(e) {
+			var model = new Model();
 			mainController = new MainController(model);
 		});
 	</script>
 	<script src="dragAndDrop.js"></script>
-	<script>
-	function drag(ev) {
-		ev.dataTransfer.setData("Text",ev.target.id);
-	}
-	</script>
 </head>
 <body>
 	<div class="row-fluid">
 		<div id="activityCanvas" class="span3">
 			<a href="#" id="addActivityButton" class="btn btn-success btn-block" rel="popover"><i class="icon-plus"></i>Add activity</a>
-			<div id="titlePopupField" class="hide">
-				<label>Activity Name</label>
-    			<input id="newActivityName" type="text" placeholder="Type activity name...">
-    			<label>Time (min)</label>
-    			<input id="newActivityLength" type="number" name="timeQuantity" min="1" max="60" value="1">
-    			<div class="btn-group">
-					<a href="#" id="typebutton" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Type <span class="caret"></span></a>
-				  	<ul id="newActivityType" class="dropdown-menu">
-				    	<li><a tabindex="-1" href="#">Presentation</a></li>
-				    	<li><a tabindex="-1" href="#">Group Work</a></li>
-				    	<li><a tabindex="-1" href="#">Discussion</a></li>
-				    	<li><a tabindex="-1" href="#">Break</a></li>
-				  	</ul>
-				</div>
-				<script>
-				$(function(){
-					$('.dropdown-toggle').dropdown();
-					$(".dropdown-menu li a").click(function(){
-						$("#typebutton").text($(this).text());
-					});
-				});
-				</script>
-  				<textarea id="newActivityDescription" rows="6"  placeholder="Type activity description..."></textarea>
-			</div>
-			<div id="contentPopupField" class="hide">
-				 <button id="confirmActivityButton" class="btn btn-success" type="button">Add activity</button>
-			</div>
+			
 			<div class="dnd-container">
 				<table id="activityTable" class="table table-bordered"></table>
 			</div>
@@ -88,9 +56,33 @@
 			<button class="btn btn-large btn-success" type="button" style="margin-top: 200px;margin-left: 50px">Add a day</button>
 		</div>
 	</div>
-	<!--<script> 
-		$('#addActivityButton').popover({placement:'bottom', title:'TROLOLOLOLO', content:'HAHA HOHO HIHI'});
-        //$('#startTime').timepicker();
-	</script>-->
+
+	<div id="titlePopupField" class="hide">
+		<label>Activity Name</label>
+		<input id="newActivityName" type="text" placeholder="Type activity name...">
+		<label>Time (min)</label>
+		<input id="newActivityLength" type="number" name="timeQuantity" min="1" max="60" value="1">
+		<div class="btn-group">
+			<a href="#" id="typebutton" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Type <span class="caret"></span></a>
+		  	<ul id="newActivityType" class="dropdown-menu">
+		    	<li><a tabindex="-1" href="#">Presentation</a></li>
+		    	<li><a tabindex="-1" href="#">Group Work</a></li>
+		    	<li><a tabindex="-1" href="#">Discussion</a></li>
+		    	<li><a tabindex="-1" href="#">Break</a></li>
+		  	</ul>
+		</div>
+		<script>
+			$(function(){
+				$('.dropdown-toggle').dropdown();
+				$(".dropdown-menu li a").click(function(){
+					$("#typebutton").text($(this).text());
+				});
+			});
+		</script>
+		<textarea id="newActivityDescription" rows="6"  placeholder="Type activity description..."></textarea>
+	</div>
+	<div id="contentPopupField" class="hide">
+		 <button id="confirmActivityButton" class="btn btn-success" type="button" onclick="mainController.newActivityViewController.popoverDismiss()">Add activity</button>
+	</div>
 </body>
 </html>

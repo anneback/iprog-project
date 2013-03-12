@@ -1,7 +1,7 @@
 // JavaScript Document
 
 // The possible activity types
-var ActivityType = ["Presentation","Group Work","Discussion","Break"]
+var ActivityType = ["Presentation","Group Work","Discussion","Break"];
 
 // This is an activity constractor
 // When you want to create a new activity you just call
@@ -11,8 +11,7 @@ function Activity(name,length,typeid,description){
 	this._length = length;
 	this._typeid = typeid;
 	this._description = description;
-	
-	// sets the name of the avtivity
+		// sets the name of the avtivity
 	this.setName = function(name) {
 		this._name = name;
 		model.notifyObservers();
@@ -203,7 +202,7 @@ function Model(){
 //var model = new Model();
 
 // you can use this method to create some test data and test your implementation
-function createTestData(){
+function createTestData(model){
 	model.addDay();
 	model.addActivity(new Activity("Introduction",10,0,""),0);
 	model.addActivity(new Activity("Idea 1",30,0,""),0);

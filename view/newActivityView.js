@@ -4,14 +4,16 @@ function NewActivityView () {
 	this._typeid = $('#typebutton').text();
 	this._description = $('#newActivityDescription').val();
 
+
 	$('#addActivityButton').popover({
 		html:true,
 		placement:'bottom',
 		title: function() {
-      		return $("#titlePopupField").html();
-    	},
-			content: function() {
-				return $("#contentPopupField").html();
-    	}
+			return $("#titlePopupField").html();
+		},
+		content: function() {
+			return $("#contentPopupField").html();
+		}
 	});
+	this.confirmButton = $('#confirmActivityButton');
 }
