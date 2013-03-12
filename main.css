@@ -16,3 +16,7 @@ body {
 .dayContainer {
 	margin-left: 10px;
 }
+
+.bootstrap-timepicker {
+	margin-left: 50px;
+}
