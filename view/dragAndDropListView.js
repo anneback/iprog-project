@@ -1,4 +1,4 @@
-function DragAndDropListView (model, activityArray, parentElement) {
+function DragAndDropListView (model, dayNumber, parentElement) {
 
 	setupListView();
 	model.addObserver(this);
@@ -9,15 +9,15 @@ function DragAndDropListView (model, activityArray, parentElement) {
 
 	function setupListView(){
 		$(parentElement).empty();
-		var day = activityArray;
-		for (var j = day.length - 1; j >= 0; j--) {
+		var day = dayOrParkedActivities(model,dayNumber);
+		for (var j = 0; j < day.length; j++) {
 			var activity = day[j];
 			var tr = $('<tr>');
 			//[0]presentation = .info, [1]discussion = .success, [2]break = .warning, [3]groupwork = .error
 			//"Presentation" = .info,"Group Work" = .error,"Discussion" = .success,"Break" = .warning
-
-			tr.attr('draggable', 'true');
-			tr.attr('ondragstart', 'drag(event)');
+			var id = 'day'+dayNumber+'pos'+j;
+			tr.attr('id',id);
+			tr.attr('draggable','true');
 			if(activity.getType()==="Presentation") {
 				tr.attr('class','info');
 			} else if(activity.getType()==="Group Work") {
@@ -32,6 +32,12 @@ function DragAndDropListView (model, activityArray, parentElement) {
 			tr.append('<td>'+activity._length+'</td>');
 			tr.append('<td>'+activity._name+'</td>');
 			$(parentElement).append(tr);
+			new DragAndDropController(dayNumber,j,'#'+id);
 		}
+	}
+
+	function dayOrParkedActivities (model, dayNumber) {
+		if (dayNumber === null) return model.parkedActivities;
+		else return model.days[dayNumber]._activities;
 	}
 }

@@ -165,14 +165,15 @@ function Model(){
 	// to move a parked activity to let's say day 0 you set oldday to null
 	// and new day to 0
 	this.moveActivity = function(oldday, oldposition, newday, newposition) {
+		console.log(oldday);
 		console.log("moving from day "+oldday+", to day "+newday);
 		console.log("moving from position "+oldposition+" to position "+ newposition);
 		if(oldday !== null && oldday == newday) {
 			this.days[oldday]._moveActivity(oldposition,newposition);
-		} if(oldday == null) {
+		} else if(oldday === 'null') {
 			var activity = this.removeParkedActivity(oldposition);
 			this.days[newday]._addActivity(activity,newposition);
-		} if(newday == null) {
+		} else if(newday === null) {
 			var activity = this.days[oldday]._removeActivity(oldposition);
 			this.addParkedActivity(activity);
 		} else {

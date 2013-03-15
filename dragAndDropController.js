@@ -1,9 +1,11 @@
-function DragAndDropController(collection, element){
+function DragAndDropController(day, position, element){
     // Handle drops
     var element = document.querySelector(element);
 
+
     element.addEventListener('dragstart', function(e){
-        e.dataTransfer.setData('text/html', this.innerHTML);
+        console.log(day);
+        e.dataTransfer.setData('Text', '["'+day+'","'+position+'"]');
         e.dataTransfer.effectAllowed = 'copy';
     }, false);
 
@@ -26,12 +28,11 @@ function DragAndDropController(collection, element){
 
     element.addEventListener('drop', function(e){
         e.preventDefault();
+        var json = $.parseJSON(e.dataTransfer.getData('Text'));
         console.log("Dropping");
-        model.moveActivity(0,0,0,1);
+        model.moveActivity(json[0],json[1],day,position);
         this.classList.remove('over');
-        var success_message = document.createElement('p');
+        var success_message = 'dropped: ' + json[0] + 'pos' + json[1];
+        console.log(success_message);
     }, false);
-}
-function drag(ev) {
-    ev.dataTransfer.setData("Text",ev.target.id);
 }
