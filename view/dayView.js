@@ -80,6 +80,9 @@ function DayView(model, number) {
             minuteStep: 1,
             showMeridian: false
         });
+		console.log(model.days[dayNumber]._activities);
+		new DragAndDropListView(model, model.days[dayNumber]._activities, '#scheduleTable'+dayNumber);
+
         incrementDayNumber();
 	}
 

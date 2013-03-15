@@ -151,13 +151,13 @@ function Model(){
 	// add an activity to parked activities
 	this.addParkedActivity = function(activity){
 		this.parkedActivities.push(activity);
-		this.notifyObservers();
+		this.notifyObservers('add');
 	};
 	
 	// remove an activity on provided position from parked activites 
 	this.removeParkedActivity = function(position) {
 		return this.parkedActivities.splice(position,1)[0];
-		this.notifyObservers();
+		this.notifyObservers('remove');
 	};
 	
 	// moves activity between the days, or day and parked activities.
@@ -179,7 +179,7 @@ function Model(){
 			var activity = this.days[oldday]._removeActivity(oldposition);
 			this.days[newday]._addActivity(activity,newposition);
 		}
-		this.notifyObservers();
+		this.notifyObservers('move');
 	};
 	
 	//*** OBSERVABLE PATTERN ***
@@ -187,7 +187,7 @@ function Model(){
 	
 	this.notifyObservers = function (args) {
 		for (var i = 0; i < this._listeners.length; i++){
-			this._listeners[i](this, args);
+			this._listeners[i].update(args);
 		}
 	};
 	
@@ -204,6 +204,7 @@ function Model(){
 // you can use this method to create some test data and test your implementation
 function createTestData(model){
 	model.addDay();
+	model.addParkedActivity(new Activity("Introduction",10,0,""));
 	model.addActivity(new Activity("Introduction",10,0,""),0);
 	model.addActivity(new Activity("Idea 1",30,0,""),0);
 	model.addActivity(new Activity("Working in groups",35,1,""),0);

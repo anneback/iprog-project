@@ -9,10 +9,10 @@ function MainController(model) {
 
 	this.model = model;
 	createTestData(model);
-	var dragAndDropListView = new DragAndDropListView(model);
+	var dragAndDropListView = new DragAndDropListView(model, model.parkedActivities, '#activityTable');
 	var newActivityView = new NewActivityView();
 	this.newActivityViewController = new NewActivityViewController(newActivityView, model);
-	var dayView = new DayView(model, 1); //Init with one day
+	var dayView = new DayView(model, 0); //Init with one day
 	this.dayViewController = new DayViewController(model);
 
 }
