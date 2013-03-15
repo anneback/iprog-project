@@ -18,7 +18,7 @@ function DragAndDropController(day, position, element){
     element.addEventListener('dragover', function(e){
         e.preventDefault();
         e.dataTransfer.dropEffect = 'copy';
-        return false;
+//        return false;
     }, false);
 
     element.addEventListener('dragleave', function(e){
@@ -34,5 +34,5 @@ function DragAndDropController(day, position, element){
         this.classList.remove('over');
         var success_message = 'dropped: ' + json[0] + 'pos' + json[1];
         console.log(success_message);
-    }, false);
+    });
 }

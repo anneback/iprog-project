@@ -14,7 +14,11 @@ function DayView(model, number) {
 	var totalLengthBreak = 18;
 
 	setupTable();
-
+	// model.addObserver(this);
+	// this.update = function(args) {
+	// 	$('#day'+dayNumber).remove();
+	// 	setupTable();
+	// };
 	function setupTable() {
 
 		var dayDiv =  $('<div>');
@@ -83,7 +87,7 @@ function DayView(model, number) {
 		console.log(model.days[dayNumber]._activities);
 		new DragAndDropListView(model, dayNumber, '#scheduleTable'+dayNumber);
 
-        incrementDayNumber();
+//        incrementDayNumber();
 	}
 
 	function incrementDayNumber() {
