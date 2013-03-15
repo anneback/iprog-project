@@ -3,17 +3,71 @@ function DayView(model, number) {
 	this.endTime = $('#endTime');
 	this.totalLength = $('#totalLength');
 	this.activityTable = $('#activityTable');*/
-
-	var startTime = '08:00';
-	var endTime = '12:00';
-	var totalLength = 20;
 	var dayNumber = number;
-	var totalLengthDiscussion = 14;
+	var endTime = model.days[dayNumber].getEnd();
+	var totalLength = model.days[dayNumber].getTotalLength();
+	/*var totalLengthDiscussion = 14;
 	var totalLengthGroupWork = 32;
 	var totalLengthPresentation = 36;
 	var totalLengthBreak = 18;
+	*/
+	var percentOfPresentation = 0;
+	var percentOfDiscussion = 0;
+	var percentOfBreak = 0;
+	var percentOfGroupWork = 0;
 
+	var totalOfWholeDay; 
+	var totalLengthPresentation;
+	var totalLengthDiscussion;
+	var totalLengthBreak;
+	var totalLengthGroupWork;
+
+	getPercent();
 	setupTable();
+	
+
+	function getPercent() {
+
+		if (model.days[dayNumber].getTotalLength()!='undefined') {
+			totalOfWholeDay = model.days[dayNumber].getTotalLength();
+		} else {
+			totalOfWholeDay = 1;
+		}
+
+		if (model.days[dayNumber].getLengthByType(0)!='undefined') {
+			totalLengthPresentation = model.days[dayNumber].getLengthByType(0);
+		} else {
+			totalLengthPresentation = 0;
+		}
+
+		if (model.days[dayNumber].getLengthByType(1)!='undefined') {
+			totalLengthDiscussion = model.days[dayNumber].getLengthByType(1);
+		} else {
+			totalLengthDiscussion = 0;
+		}
+
+		if (model.days[dayNumber].getLengthByType(2)!='undefined') {
+			totalLengthBreak = model.days[dayNumber].getLengthByType(2);
+		} else {
+			totalLengthBreak = 0;
+		}
+
+		if (model.days[dayNumber].getLengthByType(3)!='undefined') {
+			totalLengthGroupWork = model.days[dayNumber].getLengthByType(3);
+		} else {
+			totalLengthGroupWork = 0;
+		}
+
+		percentOfPresentation = Math.round(100*(totalLengthPresentation/totalOfWholeDay));
+		percentOfDiscussion = Math.round(100*(totalLengthDiscussion/totalOfWholeDay));
+		percentOfBreak = Math.round(100*(totalLengthBreak/totalOfWholeDay));
+		percentOfGroupWork = Math.round(100*(totalLengthGroupWork/totalOfWholeDay));
+
+		console.log('totalLength: '+ totalOfWholeDay+ 'min');
+		console.log('totalLengthPresentation: '+ totalLengthPresentation+ 'min');
+		console.log('percent: pres '+ percentOfPresentation+'% '+percentOfDiscussion+'% dis '+percentOfBreak+'% bre '+percentOfGroupWork+'% gro ');
+
+	}
 
 	function setupTable() {
 
@@ -36,21 +90,21 @@ function DayView(model, number) {
 		var totalLengthDiv = $('<div>');
 		totalLengthDiv.attr('id','totalLength'+dayNumber);
 		totalLengthDiv.attr('style','text-align: center');
-		totalLengthDiv.append('Total length: '+totalLength);
+		totalLengthDiv.append('Total length: '+totalLength+' min');
 		dayDiv.append(totalLengthDiv);
 
 		var progressBarDiscussionDiv = $('<div>');
 		progressBarDiscussionDiv.attr('class','bar bar-success');
-		progressBarDiscussionDiv.attr('style','width: '+totalLengthDiscussion+'%');
+		progressBarDiscussionDiv.attr('style','width: '+percentOfDiscussion+'%');
 		var progressBarPresentationDiv = $('<div>');
 		progressBarPresentationDiv.attr('class','bar bar-info');
-		progressBarPresentationDiv.attr('style','width: '+totalLengthPresentation+'%');
+		progressBarPresentationDiv.attr('style','width: '+percentOfPresentation+'%');
 		var progressBarBreakDiv = $('<div>');
 		progressBarBreakDiv.attr('class','bar bar-warning');
-		progressBarBreakDiv.attr('style','width: '+totalLengthBreak+'%');
+		progressBarBreakDiv.attr('style','width: '+percentOfBreak+'%');
 		var progressBarGroupWorkDiv = $('<div>');
 		progressBarGroupWorkDiv.attr('class','bar bar-danger');
-		progressBarGroupWorkDiv.attr('style','width: '+totalLengthGroupWork+'%');
+		progressBarGroupWorkDiv.attr('style','width: '+percentOfGroupWork+'%');
 
 		var progressBarDiv = $('<div>');
 		progressBarDiv.attr('id','progressBar'+dayNumber);
@@ -78,7 +132,7 @@ function DayView(model, number) {
 
         $('#startTime'+dayNumber).timepicker({
             minuteStep: 1,
-            showMeridian: false
+            showMeridian: true
         });
 		console.log(model.days[dayNumber]._activities);
 		new DragAndDropListView(model, dayNumber, '#scheduleTable'+dayNumber);

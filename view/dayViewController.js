@@ -9,5 +9,4 @@ function DayViewController(model) {
 			var dayView = new DayView(model, mainController.dayViewController.numberOfDays);
 			mainController.dayViewController.numberOfDays++;
 		});
-
 }
